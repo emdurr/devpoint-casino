@@ -15,7 +15,7 @@ class Player
     puts "What is your name?"
     user_input = gets.chomp.upcase
     puts "Thank you, #{user_input}!"
-    user_input = USER_NAME
+    @user_name = user_input
     age
   end
   def age

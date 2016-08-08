@@ -1,8 +1,8 @@
 require_relative 'player.rb'
 require_relative 'wallet.rb'
-USER_NAME = "blank"
+require_relative 'menu.rb'
 class Casino
-  attr_accessor :player, :wallet
+  attr_accessor :player, :wallet, :menu
 
   def initialize
     puts "Welcome to the Casino!"
@@ -12,7 +12,8 @@ class Casino
     # we should be able to switch between players
     # get it to work with one player and go from there
     @player = Player.new
-    @wallet = Wallet.new(USER_NAME)
+    @wallet = Wallet.new(@user_name)
+    @menu = Menu.new
   end
 end
 
