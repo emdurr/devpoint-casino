@@ -1,5 +1,6 @@
 require 'pry'
 require_relative 'craps.rb'
+require_relative 'menu'
 
 
 class GameMenu
@@ -19,18 +20,17 @@ class GameMenu
       counter += 1
     end
     print "-->"
-    binding.pry
     user_input = gets.to_i
     @game_to_play = @game_arr[user_input - 1]
     if @game_to_play == 'Slots'
       @slots = Slots.new
-      @slots.first_bet(@wallet)
+      @slots.first_bet
     elsif @game_to_play == 'Craps'
       @craps = Craps.new
-      @craps.first_bet(@wallet)
+      @craps.first_bet
     elsif @game_to_play == 'Hi Lo'
       @hi_lo = Hi_lo.new
-      @hi_lo.first_bet(@wallet)
+      @hi_lo.first_bet
     else
       puts "Not a valid game selection. Please try again."
       menu
