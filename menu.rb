@@ -1,11 +1,12 @@
 require 'pry'
 require_relative 'craps.rb'
 
+
 class GameMenu
-  attr_accessor :wallet, :game_arr
-  def initialize(wallet)
+  attr_accessor :game_arr, :player
+  def initialize(player)
+    @player = player
     puts "Welcome to your Casino Game menu!"
-    @wallet = wallet
     @game_arr = ['Slots', 'Hi Lo', 'Black-Jack', 'Craps']
     menu
   end
@@ -17,8 +18,8 @@ class GameMenu
       puts "#{counter}: #{game}"
       counter += 1
     end
-    binding.pry
     print "-->"
+    binding.pry
     user_input = gets.to_i
     @game_to_play = @game_arr[user_input - 1]
     if @game_to_play == 'Slots'

@@ -1,11 +1,12 @@
 require_relative 'wallet.rb'
 class Player
-  attr_accessor :wallet
+  attr_accessor :user_name, :wallet
   # make sure to add attr_accessor
   def initialize
     puts "Create a new player"
-    get_name
-
+    @user_name = get_name
+    age
+    @wallet = Wallet.new
     # setup instance variables
     #by getting user input
     # like name, age, wallet amount
@@ -15,8 +16,7 @@ class Player
     puts "What is your name?"
     user_input = gets.chomp.upcase
     puts "Thank you, #{user_input}!"
-    @user_name = user_input
-    age
+    user_input
   end
   def age
     puts "What is your age?"
