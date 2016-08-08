@@ -29,4 +29,4 @@ end
 
 new_card = Deck.new
 
-puts "#{new_card.cards.sample.color} #{new_card.cards.sample.rank} #{new_card.cards.sample.suit}"
+puts "#{new_card.cards.sample.color} #{new_card.cards.sample.rank} of #{new_card.cards.sample.suit}"
