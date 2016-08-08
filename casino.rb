@@ -1,22 +1,20 @@
 require_relative 'player.rb'
-require_relative 'wallet.rb'
-require_relative 'high_low.rb'
 require_relative 'menu.rb'
 
 class Casino
-  attr_accessor :player, :wallet, :menu
-
   def initialize
     puts "Welcome to the Casino!"
-
-    # for now 1 player
-    # we should be able to add as many players
-    # we should be able to switch between players
-    # get it to work with one player and go from there
+    get_player
+    menu
+  end
+  def get_player
     @player = Player.new
-    @wallet = Wallet.new(@player)
-    @game_menu = GameMenu.new(@wallet)
+  end
+  def menu
+    GameMenu.new(@player)
+  end
+  def self.new_game
+    GameMenu.new(@player)
   end
 end
-
 Casino.new

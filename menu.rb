@@ -2,10 +2,10 @@ require 'pry'
 require_relative 'craps.rb'
 
 class GameMenu
-  attr_accessor :wallet, :game_arr
-  def initialize(wallet)
+  attr_accessor :game_arr, :player
+  def initialize(player)
+    @player = player
     puts "Welcome to your Casino Game menu!"
-    @wallet = wallet
     @game_arr = ['Slots', 'Hi Lo', 'Black-Jack', 'Craps']
     menu
   end
@@ -22,13 +22,13 @@ class GameMenu
     @game_to_play = @game_arr[user_input - 1]
     if @game_to_play == 'Slots'
       @slots = Slots.new
-      @slots.first_bet(@wallet)
+      @slots.first_bet
     elsif @game_to_play == 'Craps'
       @craps = Craps.new
-      @craps.first_bet(@wallet)
+      @craps.first_bet
     elsif @game_to_play == 'Hi Lo'
-      @hi_lo = HighLow.new
-      @hi_lo.first_bet(@wallet)
+      @hi_lo = Hi_lo.new
+      @hi_lo.first_bet
     else
       puts "Not a valid game selection. Please try again."
       menu
