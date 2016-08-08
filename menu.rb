@@ -28,7 +28,7 @@ class Menu
       @craps.first_bet(@wallet)
     elsif @game_to_play == 'Hi Lo'
       @hi_lo = Hi_lo.new
-      @hi_lo.first_bet(wallet)
+      @hi_lo.first_bet(@wallet)
     else
       puts "Not a valid game selection. Please try again."
       menu
