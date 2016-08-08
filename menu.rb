@@ -17,7 +17,6 @@ class GameMenu
       puts "#{counter}: #{game}"
       counter += 1
     end
-    binding.pry
     print "-->"
     user_input = gets.to_i
     @game_to_play = @game_arr[user_input - 1]
@@ -28,7 +27,7 @@ class GameMenu
       @craps = Craps.new
       @craps.first_bet(@wallet)
     elsif @game_to_play == 'Hi Lo'
-      @hi_lo = Hi_lo.new
+      @hi_lo = HighLow.new
       @hi_lo.first_bet(@wallet)
     else
       puts "Not a valid game selection. Please try again."
@@ -38,3 +37,4 @@ class GameMenu
 
 
 end
+
