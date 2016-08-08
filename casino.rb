@@ -13,7 +13,7 @@ class Casino
     # get it to work with one player and go from there
     @player = Player.new
     @wallet = Wallet.new(@user_name)
-    @menu = Menu.new
+    @menu = Menu.new(@wallet)
   end
 end
 

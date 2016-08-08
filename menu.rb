@@ -1,7 +1,12 @@
+require_relative 'craps.rb'
+
 class Menu
-  def initialize
+  attr_accessor :wallet
+  def initialize(wallet)
     puts "Welcome to your Casino Game menu!"
-    @game_arr = ['Slots', 'Hi/Lo', 'Black-Jack', 'Craps']
+    @wallet = wallet
+    @game_arr = ['Slots', 'Hi Lo', 'Black-Jack', 'Craps']
+    @to_game = []
     menu
   end
 
@@ -15,6 +20,19 @@ class Menu
     print "-->"
     user_input = gets.to_i
     @game_to_play = @game_arr[user_input - 1]
+    if @game_to_play == 'Slots'
+      @slots = Slots.new
+      @slots.first_bet(@wallet)
+    elsif @game_to_play == 'Craps'
+      @craps = Craps.new
+      @craps.first_bet(@wallet)
+    elsif @game_to_play == 'Hi Lo'
+      @hi_lo = Hi_lo.new
+      @hi_lo.first_bet(wallet)
+    else
+      puts "Not a valid game selection. Please try again."
+      menu
+    end
   end
 
 
