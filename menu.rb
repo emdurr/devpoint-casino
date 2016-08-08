@@ -1,7 +1,5 @@
 require 'pry'
 require_relative 'craps.rb'
-require_relative 'menu'
-
 
 class GameMenu
   attr_accessor :game_arr, :player

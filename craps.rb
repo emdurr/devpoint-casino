@@ -17,8 +17,7 @@ class Craps
       @player.wallet.amount -= user_bet
       roll_dice
     elsif user_input == 'back'
-      main_menu = Casino.menu
-
+      Casino.new_game
     else
       puts "How much would you like to bet?"
       puts "Your current wallet total is #{@player.wallet.amount}"
