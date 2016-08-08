@@ -3,8 +3,6 @@ require_relative 'wallet.rb'
 require_relative 'high_low.rb'
 require_relative 'menu.rb'
 
-USER_NAME = "blank"
-
 class Casino
   attr_accessor :player, :wallet, :menu
 
@@ -16,8 +14,8 @@ class Casino
     # we should be able to switch between players
     # get it to work with one player and go from there
     @player = Player.new
-    @wallet = Wallet.new(@user_name)
-    @menu = Menu.new(@wallet)
+    @wallet = Wallet.new(@player)
+    @game_menu = GameMenu.new(@wallet)
   end
 end
 
