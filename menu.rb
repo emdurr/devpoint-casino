@@ -13,8 +13,8 @@ class Menu
       counter += 1
     end
     print "-->"
-    user_name = gets.to_i
-    
+    user_input = gets.to_i
+    @game_to_play = @game_arr[user_input - 1]
   end
 
 
