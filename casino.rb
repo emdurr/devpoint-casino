@@ -1,6 +1,8 @@
 require_relative 'player.rb'
 require_relative 'wallet.rb'
-require_relative 'menu.rb'
+require_relative 'high_low.rb'
+USER_NAME = "blank"
+
 class Casino
   attr_accessor :player, :wallet, :menu
 
