@@ -1,7 +1,7 @@
 # require_relative 'player.rb'
 # require-relative 'menu.rb'
 
-slots = ['A', 'J', '7']
+@slots = ['A', 'J', '7']
 
 # is there a way to get one array to repeat and spit out 3 numbers?
 # hash that associates the number with a symbol  (bonus)
@@ -18,11 +18,16 @@ def menu
     menu
     end
 end
-def pull
-  puts "Ready?\n Let's play.\n Press any key to play."
-  lever = gets.chomp.downcase
 
-exit
+
+def pull
+  puts "Ready?\n Let's play.\n Press any key to play." # would like it to be return instead of "key"
+  lever = gets.chomp.downcase
+  @slot_1 = @slots.sample  # calls the slot array 3 times randomly to get result
+  @slot_2 = @slots.sample
+  @slot_3 = @slots.sample
+  print "#{@slot_1} #{@slot_2} #{@slot_3}"
+# exit
 end
 
  menu
@@ -31,7 +36,7 @@ end
 # puts " your roll #{slot_1},#{slot_2}, and #{slot_3}."
 # puts " your winnings are"
 
-# if slot_1 = 1 and slot_2 = 1 and slot_3 = 1
+# if @slot_1 = 1 and @slot_2 = 1 and slot_3 = 1
 # Nested if statements.
 #  if slot1 = slot2
 
