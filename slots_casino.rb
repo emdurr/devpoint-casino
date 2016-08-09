@@ -27,11 +27,50 @@ def pull
   @slot_2 = @slots.sample
   @slot_3 = @slots.sample
   print "#{@slot_1} #{@slot_2} #{@slot_3}"
-# exit
+  results
+end
+def results
+  if @slot_1 == @slot_2 && @slot_1 == @slot_3
+    puts "!!!JACKPOT!!!\n $10.00 will be added to your Wallet."
+    puts " Spin again? (yes/no)"
+    choice = gets.chomp.downcase
+    if choice == "yes"
+      pull
+    else
+      menu
+    end
+
+  elsif @slot_1 == @slot_2
+    puts " You Win!\n $5.00 will be added to your Wallet."
+    puts " Would you like to play again? (yes/no)"
+    choice = gets.chomp.downcase
+    if choice == "yes"
+      pull
+    else
+      menu
+    end
+
+  elsif @slot_2 == @slot_3
+    puts " You Win!/n $5.00 will be added to your Wallet."
+    puts " Would you like to play again? (yes/no)"
+    choice = gets.chomp.downcase
+      if choice == "yes"
+      pull
+      else
+      menu
+      end
+
+  else
+    puts "You Lose."
+    menu
+  end
 end
 
- menu
- pull
+
+
+menu
+
+
 
 # puts " your roll #{slot_1},#{slot_2}, and #{slot_3}."
 # puts " your winnings are"
