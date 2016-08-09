@@ -2,8 +2,9 @@
 #require-relative 'menu.rb'
 
 class SlotsCasino
-  attr_accessor :player
-  def initialize(player)
+  attr_accessor :player, :game
+  def initialize(player, game)
+    @game = game
     @player = player
     @slots = ['A', 'J', '7']
   end
@@ -14,7 +15,7 @@ class SlotsCasino
     puts "Welcome to Slots! Press '1' to continue. Press Q to quit the game."
     input = gets.chomp.downcase
     if input == "q"
-      GameMenu.new(@player)
+      @game.menu
     elsif input == '1'
       pull
     else

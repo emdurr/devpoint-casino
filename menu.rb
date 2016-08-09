@@ -6,7 +6,7 @@ require_relative 'lucky_player1'
 
 
 class GameMenu
-  attr_accessor :game_arr, :player
+  attr_accessor :game_arr, :player, :games_played
   def initialize(player)
     @player = player
     puts "Welcome to your Casino Game menu!"
@@ -34,15 +34,15 @@ class GameMenu
     @game_to_play = @game_arr[game_selection - 1]
     if @game_to_play == 'Slots'
       check_lucky_code
-      @slots = SlotsCasino.new(@player)
-      @slots.first_bet
+      @slots = SlotsCasino.new(@player, self)
+      @slots.menu
     elsif @game_to_play == 'Craps'
       check_lucky_code
-      @craps = Craps.new(@player)
+      @craps = Craps.new(@player, self)
       @craps.first_bet
     elsif @game_to_play == 'Hi Lo'
       check_lucky_code
-      @hi_lo = HighLow.new(@player)
+      @hi_lo = HighLow.new(@player, self)
       @hi_lo.first_bet
     else
       puts "Not a valid game selection. Please try again."

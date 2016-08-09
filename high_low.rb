@@ -3,18 +3,19 @@ require 'colorize'
 require_relative 'deck_cards.rb'
 # a card needs to be drawn from an array
 class HighLow
-  attr_accessor :player
-  def initialize(player)
+  attr_accessor :player, :game
+  def initialize(player, game)
+    @game = game
     @player = player
     puts 'Welcome to High Low'
     puts 'Type Q if you would like to leave the game or C to continue.'
     quit = gets.strip.downcase
     if quit == 'q'
-      GameMenu.new(@player)
+      @game.menu
     else
       first_bet
     end
-    
+
   end
 
   def first_bet
@@ -38,7 +39,7 @@ class HighLow
   def compare_method
     puts "Is the next card going to be High or Low?"
     choice = gets.strip.downcase
-    
+
     case choice
       when 'high'
         high
@@ -51,7 +52,7 @@ class HighLow
 
   def second
     puts "The second card is #{@second_card.find_rank} of #{@second_card.suit}"
-     
+
   end
 
   def high
@@ -63,7 +64,7 @@ class HighLow
       puts "You Win!!".colorize(:green)
     else
       @player.wallet.amount -= @bet_amount
-      puts "You Lose!".colorize(:red) 
+      puts "You Lose!".colorize(:red)
     end
     play_again
   end
@@ -92,7 +93,3 @@ class HighLow
     end
   end
 end
-
-
-
-

@@ -1,8 +1,9 @@
 require_relative 'dice_roll.rb'
 require 'colorize'
 class Craps
-  attr_accessor :player
-  def initialize(player)
+  attr_accessor :player, :game
+  def initialize(player, game)
+    @game = game
     puts "Welcome to the Craps table!!"
     @dice_roll = Dice.new
     @player = player
@@ -41,7 +42,7 @@ class Craps
     @counter = 1
     user_input = gets.strip.downcase
     if user_input == 'q'
-      GameMenu.new(@player)
+      @game.menu
       #Casino.new_game
     else
       game_to_play = user_input.to_i
@@ -479,7 +480,7 @@ class Craps
     elsif user_input_4 == 'n'
       puts "Thanks for rolling!!"
       puts
-      GameMenu.new(@player)
+      @game.menu
     else
       puts "Invalid selection. Please try again."
       another_bet
