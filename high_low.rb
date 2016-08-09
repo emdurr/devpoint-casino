@@ -10,6 +10,8 @@ class HighLow
 
   def first_bet
     puts "What would you like your bet amount to be?"
+    bet_amount = gets.to_i
+    start_game
   end
 
   def start_game
@@ -32,16 +34,18 @@ class HighLow
 
     case choice
       when 'high'
-        high
+        high(first, second)
       when 'low'
-        low
+        low(first, second)
       else
         puts 'Please make a valid selection'
     end
   end
 
   def high(first, second)
-    if first_card > second_card
+    first_card = first.value
+    second_card = second.value
+    if first_card < second_card
       puts "You Win!!"
     else
       puts "You Loose!" 
@@ -49,10 +53,13 @@ class HighLow
   end
 
   def low(first, second)
-    if first_card < second_card
+    first_card = first.value
+    second_card = second.value
+    if first_card > second_card
       puts "You Win!!"
     else
       puts "You Loose!"
+    end
   end
 end
 
