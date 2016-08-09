@@ -58,7 +58,7 @@ class HighLow
     end
   end
 
-  def low(first, second)
+  def low
     @first_card = first.value
     @second_card = second.value
     if @first_card > @second_card
