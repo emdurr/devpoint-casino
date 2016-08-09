@@ -17,9 +17,9 @@ class BlackJack
 
   def dealer_hand
     @deck = Deck.new
-    @dealers_first_card = @deck.return_a_card
-    @dealers_second_card = @deck.return_a_card
-    puts "Dealer's starting hand is \n#{@dealers_first_card.find_rank} of #{@dealers_first_card.suit} "
+    @dealer_first_card = @deck.return_a_card
+    @dealer_second_card = @deck.return_a_card
+    puts "Dealer's starting hand is \n#{@dealer_first_card.find_rank} of #{@dealer_first_card.suit} "
     puts "Card upside down."
     player_hand
   end
@@ -48,8 +48,11 @@ class BlackJack
   end
 
   def dealer_option
-    binding.pry
-    puts "Second card is \n#{@dealers_second_card.find_rank} of #{@dealers_second_card.suit}"
+    puts "Second card is \n#{@dealer_second_card.find_rank} of #{@dealer_second_card.suit}"
+    if @dealer_first_card.value + @dealer_second_card.value >= 16
+      # do something
+    elsif
+    end
   end
 end
 BlackJack.new(@player)
