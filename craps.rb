@@ -104,359 +104,357 @@ class Craps
   end
 
   def bet_resolution
-    # 7 automatically resets all bets
-    # 'Pass Line' = Win when 7/11 is rolled on firt roll otherwise the winning roll for
-        # 'Pass Line' becomes the number that is rolled
-        # = Lose 2,3,12
-    # "Don't Pass Line" = Win when 2,3,12 is rolled on first roll otherwise the winning
-        # roll becomes the number that is rolled
-    #  {'Place Bet': ['4', '5', 'Six', '8', 'Nine', '10']} wins if chosen number rolled before a 7
-    #  {'Place Bet to Lose': ['4', '5', 'Six', '8', 'Nine', '10']} wins if 7 is rolled before number chosen
-    #  {'Buy Bet': ['4', '5', 'Six', '8', 'Nine', '10']} wins if chosen number is rolled before a 7
-    #  {'Lay Bet': ['4', '5', 'Six', '8', 'Nine', '10']} wins if 7 is rolled before chosen number
-    #  'Field' wins if any number in the field is rolled on the next roll double if 2 or 12
-    #  'Any 7' wins if a 7 is rolled
-    #  'Any Craps' wins if 2, 3, 12 is rolled
-    #  'Snake Eyes' wins if a 2 is rolled
-    #  'Twelve Craps' wins if a 12 is rolled
-    #  'Three Craps' wins if a 3 is rolled
-    #  'Six Five' wins if an 11 is rolled
-    #  'Horn Bet' wins if 2, 3, 11, or 12 is rolled
-    # first you have to decide if they win or Lose
-    case @total
-    when 7
-      if @bet_placement.include? 'Pass Line'
-        puts "Winner"
-      elsif @bet_placement.include? "Don't Pass Line"
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet to Lose'
-        puts "Winner"
-      elsif @bet_placement.include? 'Buy Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Lay Bet'
-        puts "Winner"
-      elsif @bet_placement.include? 'Field'
-        puts "Lose"
-      elsif @bet_placement.include? 'Any 7'
-        puts "Winner"
-      elsif @bet_placement.include? 'Snake Eyes'
-        puts "Lose"
-      elsif @bet_placement.include? 'Twelve Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Three Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Six Five'
-        puts "Lose"
-      elsif @bet_placement.include? 'Horn Bet'
-        puts "Lose"
+    @bet_placement.each do |check|
+      case @total
+      when 7
+        if @bet_placement.include? 'Pass Line'
+          puts "Winner"
+          @player.wallet.amount += @bet_total[0]
+        elsif @bet_placement.include? "Don't Pass Line"
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Place Bet'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Place Bet to Lose'
+          puts "Winner"
+          @player.wallet.amount += @bet_total[0]
+        elsif @bet_placement.include? 'Buy Bet'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Lay Bet'
+          puts "Winner"
+          @player.wallet.amount += @bet_total[0]
+        elsif @bet_placement.include? 'Field'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Any 7'
+          puts "Winner"
+          @player.wallet.amount += 4 * @bet_total[0]
+        elsif @bet_placement.include? 'Snake Eyes'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Twelve Craps'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Three Craps'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Six Five'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Horn Bet'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        else
+          puts
+        end
+      when 2
+        if @bet_placement.include? 'Pass Line'
+          puts "Lose"
+        elsif @bet_placement.include? "Don't Pass Line"
+          puts "Winner"
+          @player.wallet.amount += @bet_total[0]
+        elsif @bet_placement.include? 'Place Bet'
+          puts "Push"
+        elsif @bet_placement.include? 'Place Bet to Lose'
+          puts "Push"
+        elsif @bet_placement.include? 'Buy Bet'
+          puts "Push"
+        elsif @bet_placement.include? 'Lay Bet'
+          puts "Push"
+        elsif @bet_placement.include? 'Field'
+          puts "Double-Win"
+          @player.wallet.amount += 2 * @bet_total[0]
+        elsif @bet_placement.include? 'Any 7'
+          puts "Lose"
+        elsif @bet_placement.include? 'Snake Eyes'
+          puts "Win"
+        elsif @bet_placement.include? 'Twelve Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Three Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Six Five'
+          puts "Lose"
+        elsif @bet_placement.include? 'Horn Bet'
+          puts "Win"
+        else
+          puts
+        end
+      when 3
+        if @bet_placement.include? 'Pass Line'
+          puts "Lose"
+        elsif @bet_placement.include? "Don't Pass Line"
+          puts "Winner"
+        elsif @bet_placement.include? 'Place Bet'
+          puts "Push"
+        elsif @bet_placement.include? 'Place Bet to Lose'
+          puts "Push"
+        elsif @bet_placement.include? 'Buy Bet'
+          puts "Push"
+        elsif @bet_placement.include? 'Lay Bet'
+          puts "Push"
+        elsif @bet_placement.include? 'Field'
+          puts "Winner"
+        elsif @bet_placement.include? 'Any 7'
+          puts "Lose"
+        elsif @bet_placement.include? 'Snake Eyes'
+          puts "Lose"
+        elsif @bet_placement.include? 'Twelve Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Three Craps'
+          puts "Winner"
+        elsif @bet_placement.include? 'Six Five'
+          puts "Lose"
+        elsif @bet_placement.include? 'Horn Bet'
+          puts "Winner"
+        else
+          puts
+        end
+      when 4
+        if @bet_placement.include? 'Pass Line'
+          puts "Push"
+        elsif @bet_placement.include? "Don't Pass Line"
+          puts "Push"
+        elsif @bet_placement.include? 'Place Bet'
+          puts "Winner if 4"
+        elsif @bet_placement.include? 'Place Bet to Lose'
+          puts "Lose if 4"
+        elsif @bet_placement.include? 'Buy Bet'
+          puts "Winner if 4"
+        elsif @bet_placement.include? 'Lay Bet'
+          puts "Lose if 4"
+        elsif @bet_placement.include? 'Field'
+          puts "Winner"
+        elsif @bet_placement.include? 'Any 7'
+          puts "Lose"
+        elsif @bet_placement.include? 'Snake Eyes'
+          puts "Lose"
+        elsif @bet_placement.include? 'Twelve Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Three Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Six Five'
+          puts "Lose"
+        elsif @bet_placement.include? 'Horn Bet'
+          puts "Lose"
+        else
+          puts
+        end
+      when 5
+        if @bet_placement.include? 'Pass Line'
+          puts "Push"
+        elsif @bet_placement.include? "Don't Pass Line"
+          puts "Push"
+        elsif @bet_placement.include? 'Place Bet'
+          puts "Winner if 5"
+        elsif @bet_placement.include? 'Place Bet to Lose'
+          puts "Lose if 5"
+        elsif @bet_placement.include? 'Buy Bet'
+          puts "Winner if 5"
+        elsif @bet_placement.include? 'Lay Bet'
+          puts "Lose if 5"
+        elsif @bet_placement.include? 'Field'
+          puts "Lose"
+        elsif @bet_placement.include? 'Any 7'
+          puts "Lose"
+        elsif @bet_placement.include? 'Snake Eyes'
+          puts "Lose"
+        elsif @bet_placement.include? 'Twelve Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Three Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Six Five'
+          puts "Lose"
+        elsif @bet_placement.include? 'Horn Bet'
+          puts "Lose"
+        else
+          puts
+        end
+      when 6
+        if @bet_placement.include? 'Pass Line'
+          puts "Push"
+        elsif @bet_placement.include? "Don't Pass Line"
+          puts "Push"
+        elsif @bet_placement.include? 'Place Bet'
+          puts "Winner if 6"
+        elsif @bet_placement.include? 'Place Bet to Lose'
+          puts "Lose if 6"
+        elsif @bet_placement.include? 'Buy Bet'
+          puts "Winner if 6"
+        elsif @bet_placement.include? 'Lay Bet'
+          puts "Lose if 6"
+        elsif @bet_placement.include? 'Field'
+          puts "Lose"
+        elsif @bet_placement.include? 'Any 7'
+          puts "Lose"
+        elsif @bet_placement.include? 'Snake Eyes'
+          puts "Lose"
+        elsif @bet_placement.include? 'Twelve Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Three Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Six Five'
+          puts "Lose"
+        elsif @bet_placement.include? 'Horn Bet'
+          puts "Lose"
+        else
+          puts
+        end
+      when 8
+        if @bet_placement.include? 'Pass Line'
+          puts "Push"
+        elsif @bet_placement.include? "Don't Pass Line"
+          puts "Push"
+        elsif @bet_placement.include? 'Place Bet'
+          puts "Winner if 8"
+        elsif @bet_placement.include? 'Place Bet to Lose'
+          puts "Lose if 8"
+        elsif @bet_placement.include? 'Buy Bet'
+          puts "Winner if 8"
+        elsif @bet_placement.include? 'Lay Bet'
+          puts "Lose if 8"
+        elsif @bet_placement.include? 'Field'
+          puts "Lose"
+        elsif @bet_placement.include? 'Any 7'
+          puts "Lose"
+        elsif @bet_placement.include? 'Snake Eyes'
+          puts "Lose"
+        elsif @bet_placement.include? 'Twelve Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Three Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Six Five'
+          puts "Lose"
+        elsif @bet_placement.include? 'Horn Bet'
+          puts "Lose"
+        else
+          puts
+        end
+      when 9
+        if @bet_placement.include? 'Pass Line'
+          puts "Push"
+        elsif @bet_placement.include? "Don't Pass Line"
+          puts "Push"
+        elsif @bet_placement.include? 'Place Bet'
+          puts "Winner if 9"
+        elsif @bet_placement.include? 'Place Bet to Lose'
+          puts "Lose if 9"
+        elsif @bet_placement.include? 'Buy Bet'
+          puts "Winner if 9"
+        elsif @bet_placement.include? 'Lay Bet'
+          puts "Lose if 9"
+        elsif @bet_placement.include? 'Field'
+          puts "Winner"
+        elsif @bet_placement.include? 'Any 7'
+          puts "Lose"
+        elsif @bet_placement.include? 'Snake Eyes'
+          puts "Lose"
+        elsif @bet_placement.include? 'Twelve Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Three Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Six Five'
+          puts "Lose"
+        elsif @bet_placement.include? 'Horn Bet'
+          puts "Lose"
+        else
+          puts
+        end
+      when 10
+        if @bet_placement.include? 'Pass Line'
+          puts "Push"
+        elsif @bet_placement.include? "Don't Pass Line"
+          puts "Push"
+        elsif @bet_placement.include? 'Place Bet'
+          puts "Winner if 10"
+        elsif @bet_placement.include? 'Place Bet to Lose'
+          puts "Lose if 10"
+        elsif @bet_placement.include? 'Buy Bet'
+          puts "Winner if 10"
+        elsif @bet_placement.include? 'Lay Bet'
+          puts "Lose if 10"
+        elsif @bet_placement.include? 'Field'
+          puts "Winner"
+        elsif @bet_placement.include? 'Any 7'
+          puts "Lose"
+        elsif @bet_placement.include? 'Snake Eyes'
+          puts "Lose"
+        elsif @bet_placement.include? 'Twelve Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Three Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Six Five'
+          puts "Lose"
+        elsif @bet_placement.include? 'Horn Bet'
+          puts "Lose"
+        else
+          puts
+        end
+      when 11
+        if @bet_placement.include? 'Pass Line'
+          puts "Winner"
+        elsif @bet_placement.include? "Don't Pass Line"
+          puts "Lose"
+        elsif @bet_placement.include? 'Place Bet'
+          puts "Push"
+        elsif @bet_placement.include? 'Place Bet to Lose'
+          puts "Push"
+        elsif @bet_placement.include? 'Buy Bet'
+          puts "Push"
+        elsif @bet_placement.include? 'Lay Bet'
+          puts "Push"
+        elsif @bet_placement.include? 'Field'
+          puts "Winner"
+        elsif @bet_placement.include? 'Any 7'
+          puts "Lose"
+        elsif @bet_placement.include? 'Snake Eyes'
+          puts "Lose"
+        elsif @bet_placement.include? 'Twelve Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Three Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Six Five'
+          puts "Winner"
+        elsif @bet_placement.include? 'Horn Bet'
+          puts "Winner"
+        else
+          puts
+        end
+      when 12
+        if @bet_placement.include? 'Pass Line'
+          puts "Push"
+        elsif @bet_placement.include? "Don't Pass Line"
+          puts "Push"
+        elsif @bet_placement.include? 'Place Bet'
+          puts "Push"
+        elsif @bet_placement.include? 'Place Bet to Lose'
+          puts "Push"
+        elsif @bet_placement.include? 'Buy Bet'
+          puts "Push"
+        elsif @bet_placement.include? 'Lay Bet'
+          puts "Push"
+        elsif @bet_placement.include? 'Field'
+          puts "Winner"
+        elsif @bet_placement.include? 'Any 7'
+          puts "Lose"
+        elsif @bet_placement.include? 'Snake Eyes'
+          puts "Lose"
+        elsif @bet_placement.include? 'Twelve Craps'
+          puts "Winner"
+        elsif @bet_placement.include? 'Three Craps'
+          puts "Lose"
+        elsif @bet_placement.include? 'Six Five'
+          puts "Lose"
+        elsif @bet_placement.include? 'Horn Bet'
+          puts "Winner"
+        else
+          puts
+        end
       else
         puts
-      end
-    when 2
-      if @bet_placement.include? 'Pass Line'
-        puts "Lose"
-      elsif @bet_placement.include? "Don't Pass Line"
-        puts "Winner"
-      elsif @bet_placement.include? 'Place Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet to Lose'
-        puts "Lose"
-      elsif @bet_placement.include? 'Buy Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Lay Bet'
-        puts "Winner"
-      elsif @bet_placement.include? 'Field'
-        puts "Lose"
-      elsif @bet_placement.include? 'Any 7'
-        puts "Winner"
-      elsif @bet_placement.include? 'Snake Eyes'
-        puts "Lose"
-      elsif @bet_placement.include? 'Twelve Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Three Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Six Five'
-        puts "Lose"
-      elsif @bet_placement.include? 'Horn Bet'
-        puts "Lose"
-      else
-        puts
-      end
-    when 3
-      if @bet_placement.include? 'Pass Line'
-        puts "Winner"
-      elsif @bet_placement.include? "Don't Pass Line"
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet to Lose'
-        puts "Winner"
-      elsif @bet_placement.include? 'Buy Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Lay Bet'
-        puts "Winner"
-      elsif @bet_placement.include? 'Field'
-        puts "Lose"
-      elsif @bet_placement.include? 'Any 7'
-        puts "Winner"
-      elsif @bet_placement.include? 'Snake Eyes'
-        puts "Lose"
-      elsif @bet_placement.include? 'Twelve Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Three Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Six Five'
-        puts "Lose"
-      elsif @bet_placement.include? 'Horn Bet'
-        puts "Lose"
-      else
-        puts
-      end
-    when 4
-      if @bet_placement.include? 'Pass Line'
-        puts "Winner"
-      elsif @bet_placement.include? "Don't Pass Line"
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet to Lose'
-        puts "Winner"
-      elsif @bet_placement.include? 'Buy Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Lay Bet'
-        puts "Winner"
-      elsif @bet_placement.include? 'Field'
-        puts "Lose"
-      elsif @bet_placement.include? 'Any 7'
-        puts "Winner"
-      elsif @bet_placement.include? 'Snake Eyes'
-        puts "Lose"
-      elsif @bet_placement.include? 'Twelve Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Three Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Six Five'
-        puts "Lose"
-      elsif @bet_placement.include? 'Horn Bet'
-        puts "Lose"
-      else
-        puts
-      end
-    when 5
-      if @bet_placement.include? 'Pass Line'
-        puts "Winner"
-      elsif @bet_placement.include? "Don't Pass Line"
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet to Lose'
-        puts "Winner"
-      elsif @bet_placement.include? 'Buy Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Lay Bet'
-        puts "Winner"
-      elsif @bet_placement.include? 'Field'
-        puts "Lose"
-      elsif @bet_placement.include? 'Any 7'
-        puts "Winner"
-      elsif @bet_placement.include? 'Snake Eyes'
-        puts "Lose"
-      elsif @bet_placement.include? 'Twelve Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Three Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Six Five'
-        puts "Lose"
-      elsif @bet_placement.include? 'Horn Bet'
-        puts "Lose"
-      else
-        puts
-      end
-    when 6
-      if @bet_placement.include? 'Pass Line'
-        puts "Winner"
-      elsif @bet_placement.include? "Don't Pass Line"
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet to Lose'
-        puts "Winner"
-      elsif @bet_placement.include? 'Buy Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Lay Bet'
-        puts "Winner"
-      elsif @bet_placement.include? 'Field'
-        puts "Lose"
-      elsif @bet_placement.include? 'Any 7'
-        puts "Winner"
-      elsif @bet_placement.include? 'Snake Eyes'
-        puts "Lose"
-      elsif @bet_placement.include? 'Twelve Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Three Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Six Five'
-        puts "Lose"
-      elsif @bet_placement.include? 'Horn Bet'
-        puts "Lose"
-      else
-        puts
-      end
-    when 8
-      if @bet_placement.include? 'Pass Line'
-        puts "Winner"
-      elsif @bet_placement.include? "Don't Pass Line"
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet to Lose'
-        puts "Winner"
-      elsif @bet_placement.include? 'Buy Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Lay Bet'
-        puts "Winner"
-      elsif @bet_placement.include? 'Field'
-        puts "Lose"
-      elsif @bet_placement.include? 'Any 7'
-        puts "Winner"
-      elsif @bet_placement.include? 'Snake Eyes'
-        puts "Lose"
-      elsif @bet_placement.include? 'Twelve Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Three Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Six Five'
-        puts "Lose"
-      elsif @bet_placement.include? 'Horn Bet'
-        puts "Lose"
-      else
-        puts
-      end
-    when 9
-      if @bet_placement.include? 'Pass Line'
-        puts "Winner"
-      elsif @bet_placement.include? "Don't Pass Line"
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet to Lose'
-        puts "Winner"
-      elsif @bet_placement.include? 'Buy Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Lay Bet'
-        puts "Winner"
-      elsif @bet_placement.include? 'Field'
-        puts "Lose"
-      elsif @bet_placement.include? 'Any 7'
-        puts "Winner"
-      elsif @bet_placement.include? 'Snake Eyes'
-        puts "Lose"
-      elsif @bet_placement.include? 'Twelve Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Three Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Six Five'
-        puts "Lose"
-      elsif @bet_placement.include? 'Horn Bet'
-        puts "Lose"
-      else
-        puts
-      end
-    when 10
-      if @bet_placement.include? 'Pass Line'
-        puts "Winner"
-      elsif @bet_placement.include? "Don't Pass Line"
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet to Lose'
-        puts "Winner"
-      elsif @bet_placement.include? 'Buy Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Lay Bet'
-        puts "Winner"
-      elsif @bet_placement.include? 'Field'
-        puts "Lose"
-      elsif @bet_placement.include? 'Any 7'
-        puts "Winner"
-      elsif @bet_placement.include? 'Snake Eyes'
-        puts "Lose"
-      elsif @bet_placement.include? 'Twelve Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Three Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Six Five'
-        puts "Lose"
-      elsif @bet_placement.include? 'Horn Bet'
-        puts "Lose"
-      else
-        puts
-      end
-    when 11
-      if @bet_placement.include? 'Pass Line'
-        puts "Winner"
-      elsif @bet_placement.include? "Don't Pass Line"
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet to Lose'
-        puts "Winner"
-      elsif @bet_placement.include? 'Buy Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Lay Bet'
-        puts "Winner"
-      elsif @bet_placement.include? 'Field'
-        puts "Lose"
-      elsif @bet_placement.include? 'Any 7'
-        puts "Winner"
-      elsif @bet_placement.include? 'Snake Eyes'
-        puts "Lose"
-      elsif @bet_placement.include? 'Twelve Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Three Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Six Five'
-        puts "Lose"
-      elsif @bet_placement.include? 'Horn Bet'
-        puts "Lose"
-      else
-        puts
-      end
-    when 12
-      if @bet_placement.include? 'Pass Line'
-        puts "Winner"
-      elsif @bet_placement.include? "Don't Pass Line"
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Place Bet to Lose'
-        puts "Winner"
-      elsif @bet_placement.include? 'Buy Bet'
-        puts "Lose"
-      elsif @bet_placement.include? 'Lay Bet'
-        puts "Winner"
-      elsif @bet_placement.include? 'Field'
-        puts "Lose"
-      elsif @bet_placement.include? 'Any 7'
-        puts "Winner"
-      elsif @bet_placement.include? 'Snake Eyes'
-        puts "Lose"
-      elsif @bet_placement.include? 'Twelve Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Three Craps'
-        puts "Lose"
-      elsif @bet_placement.include? 'Six Five'
-        puts "Lose"
-      elsif @bet_placement.include? 'Horn Bet'
-        puts "Lose"
-      else
-        puts
-      end
-    else
-      puts
 
+      end
     end
     #
     # @bet_placement.each do |pull_rule|
@@ -465,7 +463,7 @@ class Craps
     #
     # end
     # then you have to resolve each one of the bets
-    puts "Win or lose!"
+    # puts "Win or lose!"
     again
   end
 
