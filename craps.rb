@@ -113,18 +113,78 @@ class Craps
         elsif @bet_placement.include? "Don't Pass Line"
           puts "Lose"
           @player.wallet.amount -= @bet_total[0]
-        elsif @bet_placement.include? 'Place Bet'
+        elsif @bet_placement.include? 'Place Bet 4'
           puts "Lose"
           @player.wallet.amount -= @bet_total[0]
-        elsif @bet_placement.include? 'Place Bet to Lose'
-          puts "Winner"
-          @player.wallet.amount += @bet_total[0]
-        elsif @bet_placement.include? 'Buy Bet'
+        elsif @bet_placement.include? 'Place Bet 5'
           puts "Lose"
           @player.wallet.amount -= @bet_total[0]
-        elsif @bet_placement.include? 'Lay Bet'
+        elsif @bet_placement.include? 'Place Bet 6'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Place Bet 8'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Place Bet 9'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Place Bet 10'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Place Bet to Lose 4'
           puts "Winner"
-          @player.wallet.amount += @bet_total[0]
+          @player.wallet.amount += 2.2 * @bet_total[0]
+        elsif @bet_placement.include? 'Place Bet to Lose 5'
+          puts "Winner"
+          @player.wallet.amount += 1.6 * @bet_total[0]
+        elsif @bet_placement.include? 'Place Bet to Lose 6'
+          puts "Winner"
+          @player.wallet.amount += 1.25 * @bet_total[0]
+        elsif @bet_placement.include? 'Place Bet to Lose 8'
+          puts "Winner"
+          @player.wallet.amount += 1.25 * @bet_total[0]
+        elsif @bet_placement.include? 'Place Bet to Lose 9'
+          puts "Winner"
+          @player.wallet.amount += 1.6 * @bet_total[0]
+        elsif @bet_placement.include? 'Place Bet to Lose 10'
+          puts "Winner"
+          @player.wallet.amount += 2.2 * @bet_total[0]
+        elsif @bet_placement.include? 'Buy Bet 4'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Buy Bet 5'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Buy Bet 6'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Buy Bet 8'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Buy Bet 9'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Buy Bet 10'
+          puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
+        elsif @bet_placement.include? 'Lay Bet 4'
+          puts "Winner"
+          @player.wallet.amount += 2 * @bet_total[0]
+        elsif @bet_placement.include? 'Lay Bet 5'
+          puts "Winner"
+          @player.wallet.amount += 1.5 * @bet_total[0]
+        elsif @bet_placement.include? 'Lay Bet 6'
+          puts "Winner"
+          @player.wallet.amount += 1.2 * @bet_total[0]
+        elsif @bet_placement.include? 'Lay Bet 8'
+          puts "Winner"
+          @player.wallet.amount += 1.2 * @bet_total[0]
+        elsif @bet_placement.include? 'Lay Bet 9'
+          puts "Winner"
+          @player.wallet.amount += 1.5 * @bet_total[0]
+        elsif @bet_placement.include? 'Lay Bet 10'
+          puts "Winner"
+          @player.wallet.amount += 2 * @bet_total[0]
         elsif @bet_placement.include? 'Field'
           puts "Lose"
           @player.wallet.amount -= @bet_total[0]
@@ -152,6 +212,7 @@ class Craps
       when 2
         if @bet_placement.include? 'Pass Line'
           puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
         elsif @bet_placement.include? "Don't Pass Line"
           puts "Winner"
           @player.wallet.amount += @bet_total[0]
@@ -168,8 +229,10 @@ class Craps
           @player.wallet.amount += 2 * @bet_total[0]
         elsif @bet_placement.include? 'Any 7'
           puts "Lose"
+          @player.wallet.amount -= @bet_total[0]
         elsif @bet_placement.include? 'Snake Eyes'
           puts "Win"
+          @player.wallet.amount += @bet_total[0]
         elsif @bet_placement.include? 'Twelve Craps'
           puts "Lose"
         elsif @bet_placement.include? 'Three Craps'
