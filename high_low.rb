@@ -18,8 +18,8 @@ class HighLow
   end
 
   def first_bet
-    puts "What would you like your bet amount to be?"
-    bet_amount = gets.to_i
+    puts "How much would you like to bet of your #{@player.wallet.amount} amount?"
+    @bet_amount = gets.to_i
     start_game
   end
 
@@ -47,7 +47,6 @@ class HighLow
       else
         puts 'Please make a valid selection'
     end
-    second
   end
 
   def second
@@ -56,23 +55,29 @@ class HighLow
   end
 
   def high
+    second
     # @first_card = first.value
     # @second_card = second.value
     if @first_card.value < @second_card.value
+      @player.wallet.amount += @bet_amount
       puts "You Win!!".colorize(:green)
     else
-      puts "You Loose!".colorize(:red) 
+      @player.wallet.amount -= @bet_amount
+      puts "You Lose!".colorize(:red) 
     end
     play_again
   end
 
   def low
+    second
     # @first_card = first.value
     # @second_card = second.value
     if @first_card.value > @second_card.value
+      @player.wallet.amount += @bet_amount
       puts "You Win!!".colorize(:green)
     else
-      puts "You Loose!".colorize(:red)
+      @player.wallet.amount -= @bet_amount
+      puts "You Lose!".colorize(:red)
     end
     play_again
   end
