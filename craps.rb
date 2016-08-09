@@ -102,8 +102,21 @@ class Craps
   end
 
   def bet_resolution
+    # When 2 is rolled then 'Pass the Line' = lose (game is reset),
+    #                       'Don't pass the line' = win (game reset),
+    #                       'Field' = win (turn continues),
+    #                       'Any Craps' = win (one time bet),
+    #                       'Snake Eyes' = win (one time bet)
+    # When 3 is rolled the 'Pass the line' = lose (game is reset),
+                            #'Don't pass the line' (game reset),
+                            #'Field' = win (one time bet),
+                            # 'Any Craps' = win (one time bet),
+                            # 'Three Craps' = Win (one time bet)
+    # When 4 is rolled the 'Place Bet 4' wins
     # first you have to decide if they win or Lose
+    @bet_placement.each do |pull_rule|
 
+    end
     # then you have to resolve each one of the bets
     puts "Win or lose!"
     again
@@ -120,7 +133,7 @@ class Craps
     elsif user_input_4 == 'n'
       puts "Thanks for rolling!!"
       puts
-      Casino.new_game
+      GameMenu.new(@player)
     else
       puts "Invalid selection. Please try again."
       another_bet
