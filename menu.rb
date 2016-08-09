@@ -1,6 +1,7 @@
 require 'pry'
 require_relative 'craps.rb'
 require_relative 'high_low.rb'
+require_relative 'slots_casino.rb'
 
 class GameMenu
   attr_accessor :game_arr, :player
@@ -28,8 +29,8 @@ class GameMenu
     end
     @game_to_play = @game_arr[game_selection - 1]
     if @game_to_play == 'Slots'
-      @slots = Slots.new
-      @slots.first_bet
+      @slots = SlotsCasino.new(@player)
+      @slots.menu
     elsif @game_to_play == 'Craps'
       @craps = Craps.new(@player)
       @craps.first_bet
