@@ -1,4 +1,5 @@
 require_relative 'dice_roll.rb'
+require 'colorize'
 class Craps
   attr_accessor :player
   def initialize(player)
@@ -102,17 +103,19 @@ class Craps
   end
 
   def bet_resolution
-    # When 2 is rolled then 'Pass the Line' = lose (game is reset),
-    #                       'Don't pass the line' = win (game reset),
-    #                       'Field' = win (turn continues),
-    #                       'Any Craps' = win (one time bet),
-    #                       'Snake Eyes' = win (one time bet)
-    # When 3 is rolled the 'Pass the line' = lose (game is reset),
-                            #'Don't pass the line' (game reset),
-                            #'Field' = win (one time bet),
-                            # 'Any Craps' = win (one time bet),
-                            # 'Three Craps' = Win (one time bet)
-    # When 4 is rolled the 'Place Bet 4' wins
+    # 'Pass Line' = Win when 7/11 is rolled on firt roll otherwise the winning roll for
+        # 'Pass Line' becomes the number that is rolled
+        # = Lose 2,3,12
+    # "Don't Pass Line" = Win when 2,3,12 is rolled on first roll otherwise the winning
+        # roll becomes the number that is rolled
+        # , "Don't Pass Line Odds",
+                       {'Place Bet': ['4', '5', 'Six', '8', 'Nine', '10']},
+                       {'Place Bet to Lose': ['4', '5', 'Six', '8', 'Nine', '10']},
+                       {'Buy Bet': ['4', '5', 'Six', '8', 'Nine', '10']},
+                       {'Lay Bet': ['4', '5', 'Six', '8', 'Nine', '10']},
+                       'Big 6', 'Big 8', 'Field', 'Any 7', 'Any Craps', 'Snake Eyes', 'Twelve Craps',
+                       'Three Craps', 'Six Five',
+                       'Horn Bet'
     # first you have to decide if they win or Lose
     @bet_placement.each do |pull_rule|
 
