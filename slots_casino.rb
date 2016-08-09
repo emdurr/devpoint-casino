@@ -7,19 +7,21 @@ slots = ['A', 'J', '7']
 # hash that associates the number with a symbol  (bonus)
 
 def menu
-  puts "Welcome to Slots! Press any number to continue. Press Q to quit the game."
+  puts "Welcome to Slots! Press '1' to continue. Press Q to quit the game."
   input = gets.chomp.downcase
-    if "Q"
+    if input == "q"
     exit
-    else "0..9"
+    elsif input == '1'
     pull
-    # elsif (letters)
+    else
     puts "Please try another entry."
+    menu
     end
 end
 def pull
   puts "Ready?\n Let's play.\n Press any key to play."
-  lever = gets.chomp
+  lever = gets.chomp.downcase
+
 exit
 end
 
