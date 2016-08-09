@@ -43,7 +43,7 @@ class SlotsCasino
       if choice == "yes" || choice == "y"
         pull
       else
-        menu
+        @game.menu
       end
 
     elsif @slot_1 == @slot_2
@@ -51,10 +51,10 @@ class SlotsCasino
       @player.wallet.amount += 5
       puts " Would you like to play again? (yes/no)"
       choice = gets.chomp.downcase
-      if choice == "yes" && choice == "y"
+      if choice == "yes" || choice == "y"
         pull
       else
-        menu
+        @game.menu
       end
 
     elsif @slot_2 == @slot_3
@@ -62,10 +62,10 @@ class SlotsCasino
       @player.wallet.amount += 5
       puts " Would you like to play again? (yes/no)"
       choice = gets.chomp.downcase
-        if choice == "yes" && choice == "y"
+        if choice == "yes" || choice == "y"
           pull
         else
-          menu
+          @game.menu
         end
 
     else
@@ -73,34 +73,11 @@ class SlotsCasino
       @player.wallet.amount -= 1
       puts " Would you like to play again? (yes/no)"
       choice = gets.chomp.downcase
-      if choice == "yes" && choice == "y"
+      if choice == "yes" || choice == "y"
         pull
       else
-        menu
+        @game.menu
       end
     end
   end
 end
-
-
-
-
-
-
-# puts " your roll #{slot_1},#{slot_2}, and #{slot_3}."
-# puts " your winnings are"
-
-# if @slot_1 = 1 and @slot_2 = 1 and slot_3 = 1
-# Nested if statements.
-#  if slot1 = slot2
-
-# if slot2 = slot 3
-# award (something) points
-
-# else if slot2 = slot3
-# awards 5 points.
-
-# score = score + 10 points
-
-# else
-# puts "nothing"
