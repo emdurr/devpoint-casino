@@ -48,12 +48,6 @@ class Deck
   def return_a_card
     return @cards.sample
   end
-
-  def pick_card
-    puts "HEY"
-    binding.pry
-    puts @cards.sample
-  end
 end
 
 new_card = Deck.new
