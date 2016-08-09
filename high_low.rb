@@ -2,10 +2,18 @@ require 'pry'
 require_relative 'deck_cards.rb'
 # a card needs to be drawn from an array
 class HighLow
-  attr_accessor
-  def initialize
+  attr_accessor :player
+  def initialize(player)
+    @player = player
     puts 'Welcome to High Low'
-    first_bet
+    puts 'Type Q if you would like to leave the game.'
+    quit = gets.strip.downcase
+    if quit == 'q'
+      GameMenu.new(@player)
+    else
+      first_bet
+    end
+    
   end
 
   def first_bet
@@ -19,33 +27,31 @@ class HighLow
     @deck = Deck.new
     # puts @deck
     # require_relative 'deck_cards.rb'
-    first_card = @deck.return_a_card
-    second_card = @deck.return_a_card
-    puts first_card.find_rank
+    @first_card = @deck.return_a_card
+    @second_card = @deck.return_a_card
+    puts @first_card.find_rank
     # binding.pry
-    compare_method(first_card, second_card)
+    compare_method
   end
 
-  def compare_method(first, second)
+  def compare_method
     puts "Is the next card going to be High or Low?"
     choice = gets.strip.downcase
-    puts 'What would like to bet?'
-    bet_amount = gets.to_i
-
+    
     case choice
       when 'high'
-        high(first, second)
+        high
       when 'low'
-        low(first, second)
+        low
       else
         puts 'Please make a valid selection'
     end
   end
 
-  def high(first, second)
-    first_card = first.value
-    second_card = second.value
-    if first_card < second_card
+  def high
+    @first_card = first.value
+    @second_card = second.value
+    if @first_card < @second_card
       puts "You Win!!"
     else
       puts "You Loose!" 
@@ -53,9 +59,9 @@ class HighLow
   end
 
   def low(first, second)
-    first_card = first.value
-    second_card = second.value
-    if first_card > second_card
+    @first_card = first.value
+    @second_card = second.value
+    if @first_card > @second_card
       puts "You Win!!"
     else
       puts "You Loose!"
