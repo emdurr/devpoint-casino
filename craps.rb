@@ -9,8 +9,7 @@ class Craps
                        {'Place Bet to Lose': ['4', '5', 'Six', '8', 'Nine', '10']},
                        {'Buy Bet': ['4', '5', 'Six', '8', 'Nine', '10']},
                        {'Lay Bet': ['4', '5', 'Six', '8', 'Nine', '10']},
-                       'Big 6', 'Big 8', 'Field', 'Hard 4', 'Hard 6', 'Hard 8',
-                       'Hard 10', 'Any 7', 'Any Craps', 'Snake Eyes', 'Twelve Craps',
+                       'Big 6', 'Big 8', 'Field', 'Any 7', 'Any Craps', 'Snake Eyes', 'Twelve Craps',
                        'Three Craps', 'Six Five',
                        'Horn Bet']
     @counter = 1
@@ -111,6 +110,7 @@ class Craps
     user_input_4 = gets.strip.downcase
     if user_input_4 == 'y'
       puts "Let's do this!"
+      @bet_placement.clear
       first_bet
     elsif user_input_4 == 'n'
       puts "Thanks for rolling!!"
