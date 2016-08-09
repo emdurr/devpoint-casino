@@ -24,7 +24,7 @@ class GameMenu
       @slots = Slots.new
       @slots.first_bet
     elsif @game_to_play == 'Craps'
-      @craps = Craps.new
+      @craps = Craps.new(@player)
       @craps.first_bet
     elsif @game_to_play == 'Hi Lo'
       @hi_lo = Hi_lo.new
@@ -37,4 +37,3 @@ class GameMenu
 
 
 end
-
