@@ -1,5 +1,6 @@
 require 'pry'
 require_relative 'craps.rb'
+require_relative 'high_low.rb'
 
 class GameMenu
   attr_accessor :game_arr, :player
@@ -27,7 +28,7 @@ class GameMenu
       @craps = Craps.new(@player)
       @craps.first_bet
     elsif @game_to_play == 'Hi Lo'
-      @hi_lo = Hi_lo.new
+      @hi_lo = HighLow.new
       @hi_lo.first_bet
     else
       puts "Not a valid game selection. Please try again."

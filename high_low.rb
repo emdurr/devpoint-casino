@@ -5,8 +5,11 @@ class HighLow
   attr_accessor
   def initialize
     puts 'Welcome to High Low'
-    puts 'Type Quit at anytime to leave the game.'
-    start_game
+    first_bet
+  end
+
+  def first_bet
+    puts "What would you like your bet amount to be?"
   end
 
   def start_game
@@ -22,14 +25,38 @@ class HighLow
   end
 
   def compare_method(first, second)
-    binding.pry
-    puts "high or low"
-    choice = gets.strip
-    puts "#{first}, #{second}"
+    puts "Is the next card going to be High or Low?"
+    choice = gets.strip.downcase
+    puts 'What would like to bet?'
+    bet_amount = gets.to_i
+
+    case choice
+      when 'high'
+        high
+      when 'low'
+        low
+      else
+        puts 'Please make a valid selection'
+    end
+  end
+
+  def high(first, second)
+    if first_card > second_card
+      puts "You Win!!"
+    else
+      puts "You Loose!" 
+    end
+  end
+
+  def low(first, second)
+    if first_card < second_card
+      puts "You Win!!"
+    else
+      puts "You Loose!"
   end
 end
 
-HighLow.new
+
 
 
 # grab userinput and store it 
