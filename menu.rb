@@ -26,7 +26,7 @@ class GameMenu
     else
       game_selection = user_input.to_i
     end
-    @game_to_play = @game_arr[user_input - 1]
+    @game_to_play = @game_arr[game_selection - 1]
     if @game_to_play == 'Slots'
       @slots = Slots.new
       @slots.first_bet
