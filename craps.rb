@@ -1,5 +1,6 @@
 require_relative 'dice_roll.rb'
 class Craps
+  attr_accessor :player
   def initialize(player)
     puts "Welcome to the Craps table!!"
     @dice_roll = Dice.new
@@ -31,15 +32,16 @@ class Craps
 
   def first_bet
     puts "Choose a bet to place:"
-    puts "Enter 'exit' to quit Craps."
+    puts "Type 'Q' if you would like to leave Craps."
     @available_bets.each do |el|
       puts "#{@counter}: #{el}"
       @counter += 1
     end
     @counter = 1
     user_input = gets.strip.downcase
-    if user_input == 'exit'
-      Casino.new_game
+    if user_input == 'q'
+      GameMenu.new(@player)
+      #Casino.new_game
     else
       game_to_play = user_input.to_i
     end
@@ -100,8 +102,11 @@ class Craps
   end
 
   def bet_resolution
-      puts "Win or lose!"
-      again
+    # first you have to decide if they win or Lose
+
+    # then you have to resolve each one of the bets
+    puts "Win or lose!"
+    again
   end
 
   def again

@@ -13,13 +13,19 @@ class GameMenu
 
   def menu
     puts "What game would you like to play?"
+    puts "Type 'Q' to leave the Casino"
     counter = 1
     @game_arr.each do |game|
       puts "#{counter}: #{game}"
       counter += 1
     end
     print "-->"
-    user_input = gets.to_i
+    user_input = gets.strip.downcase
+    if user_input == 'q'
+      exit
+    else
+      game_selection = user_input.to_i
+    end
     @game_to_play = @game_arr[user_input - 1]
     if @game_to_play == 'Slots'
       @slots = Slots.new
