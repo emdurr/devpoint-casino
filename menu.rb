@@ -39,7 +39,7 @@ class GameMenu
     elsif @game_to_play == 'Craps'
       check_lucky_code
       @craps = Craps.new(@player, self)
-      @craps.first_bet
+      @craps.bet_amount
     elsif @game_to_play == 'Hi Lo'
       check_lucky_code
       @hi_lo = HighLow.new(@player, self)
