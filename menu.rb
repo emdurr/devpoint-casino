@@ -11,7 +11,7 @@ class GameMenu
   def initialize(player)
     @player = player
     puts "Welcome to your Casino Game menu!"
-    @game_arr = ['Slots', 'Hi Lo', 'Craps']
+    @game_arr = ['Slots', 'Hi Lo', 'Black-Jack', 'Craps']
     @games_played = 0
     @lucky = Lucky1.new(@player)
     menu

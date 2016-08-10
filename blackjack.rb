@@ -12,12 +12,7 @@ class BlackJack
     puts 'Type Q to leave the Table or S to start WINNING!.'
     input = gets.strip.downcase
     if input == 'q'
-    GameMenu.new(@player, @game)
-    else
-    puts 'Type q to leave the Table or S to start WINNING!.'
-    input = gets.strip.downcase
-    if input == 'q'
-    GameMenu.new(@player)
+      @game.menu
     else
       dealer_hand
     end
@@ -66,7 +61,7 @@ class BlackJack
       dealer_last
     elsif @dealer_first_card.value + @dealer_second_card.value >= 17 || @dealer_first_card.value + @dealer_second_card.value == 21
       pick_winner
-    if @dealer_first_card.value + @dealer_second_card.value >= 16
+    elsif @dealer_first_card.value + @dealer_second_card.value >= 16
       # do something
     else
     end
@@ -88,4 +83,4 @@ end
 
 
 
-BlackJack.new(@player)
+
