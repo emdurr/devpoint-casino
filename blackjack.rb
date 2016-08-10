@@ -7,14 +7,20 @@ class BlackJack
   def initialize(player, game)
     @game = game
     @player = player
+    @game = game
     puts 'Welcome to BlackJack!'
     puts 'Type Q to leave the Table or S to start WINNING!.'
-    input = gets.strip.downcase 
+    input = gets.strip.downcase
     if input == 'q'
-    GameMenu.new(@player, @game) 
-    else 
+    GameMenu.new(@player, @game)
+    else
+    puts 'Type q to leave the Table or S to start WINNING!.'
+    input = gets.strip.downcase
+    if input == 'q'
+    GameMenu.new(@player)
+    else
       dealer_hand
-    end 
+    end
   end
 
   def dealer_hand
@@ -60,6 +66,9 @@ class BlackJack
       dealer_last
     elsif @dealer_first_card.value + @dealer_second_card.value >= 17 || @dealer_first_card.value + @dealer_second_card.value == 21
       pick_winner
+    if @dealer_first_card.value + @dealer_second_card.value >= 16
+      # do something
+    else
     end
   end
 
@@ -78,3 +87,5 @@ end
 
 
 
+
+BlackJack.new(@player)

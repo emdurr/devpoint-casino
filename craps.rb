@@ -60,10 +60,10 @@ class Craps
 
   def bet_amount
     puts "How much will you be betting of your #{@player.wallet.amount} amount per bet?"
-    puts "Enter 'back' to go back to placing a bet."
+    puts "Enter 'q' to go back to the game menu"
     user_input_1 = gets.strip.downcase
-    if user_input_1 == 'back'
-      first_bet
+    if user_input_1 == 'q'
+      @game.menu
     else
       wager = user_input_1.to_i
     end
@@ -71,7 +71,7 @@ class Craps
     user_input_2 = gets.strip.downcase
     if user_input_2 == 'y'
       puts "Bet amount accepted!"
-      @bet_total = wager
+      @bet_total << wager
       first_bet
     elsif user_input_2 == 'n'
       puts "Bet refused!"
@@ -216,7 +216,6 @@ class Craps
           @player.wallet.amount -= @bet_total[0]
         else
           puts
-          binding.pry
         end
       when 2
         if check == 'Pass Line'
@@ -320,7 +319,6 @@ class Craps
           @player.wallet.amount += 7.5 * @bet_total[0]
         else
           puts
-          binding.pry
         end
       when 3
         if check == 'Pass Line'
@@ -424,7 +422,6 @@ class Craps
           @player.wallet.amount += 3.75 * @bet_total[0]
         else
           puts
-          binding.pry
         end
       when 4
         if check == 'Pass Line'
@@ -528,7 +525,6 @@ class Craps
           @player.wallet.amount -= @bet_total[0]
         else
           puts
-          binding.pry
         end
       when 5
         if check == 'Pass Line'
@@ -632,7 +628,6 @@ class Craps
           @player.wallet.amount -= @bet_total[0]
         else
           puts
-          binding.pry
         end
       when 6
         if check == 'Pass Line'
@@ -736,7 +731,6 @@ class Craps
           @player.wallet.amount -= @bet_total[0]
         else
           puts
-          binding.pry
         end
       when 8
         if check == 'Pass Line'
@@ -840,7 +834,6 @@ class Craps
           @player.wallet.amount -= @bet_total[0]
         else
           puts
-          binding.pry
         end
       when 9
         if check == 'Pass Line'
@@ -944,7 +937,6 @@ class Craps
           @player.wallet.amount -= @bet_total[0]
         else
           puts
-          binding.pry
         end
       when 10
         if check == 'Pass Line'
@@ -1033,7 +1025,6 @@ class Craps
           @player.wallet.amount -= @bet_total[0]
         else
           puts
-          binding.pry
         end
       when 11
         if check == 'Pass Line'
@@ -1137,7 +1128,6 @@ class Craps
           @player.wallet.amount += 3.75 * @bet_total[0]
         else
           puts
-          binding.pry
         end
       when 12
         if check == 'Pass Line'
@@ -1241,14 +1231,23 @@ class Craps
           @player.wallet.amount += 7.5 * @bet_total[0]
         else
           puts
-          binding.pry
         end
       else
         puts
 
       end
     end
-    again
+    check_wallet
+  end
+
+  def check_wallet
+    if @player.wallet.amount <= 0
+      puts "I'm sorry you do not have enough money to play."
+      puts "Come again when you've indebted your soul to a bookie"
+      @game.menu
+    else
+      again
+    end
   end
 
   def again
@@ -1269,7 +1268,13 @@ class Craps
         again
       end
     elsif user_input_4 == 'n'
-      puts "Thanks for rolling!!"
+      puts "Would you like to check your wallet amount before leaving? y/n"
+      user_input_6 = gets.strip.downcase
+      if user_input_6 == 'y'
+        puts "Your wallet total is: #{@player.wallet.amount}"
+      else
+        puts "Thanks for rolling!!"
+      end
       puts
       @game.menu
     else
