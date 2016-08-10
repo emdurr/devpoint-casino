@@ -45,6 +45,10 @@ class GameMenu
       check_lucky_code
       @hi_lo = HighLow.new(@player, self)
       @hi_lo.first_bet
+    elsif @game_to_play == 'Black-Jack'
+      check_lucky_code
+      @blackjack = BlackJack.new(@player, self)
+      @blackjack.dealer_hand
     else
       puts "Not a valid game selection. Please try again."
       menu

@@ -1,5 +1,6 @@
 require 'pry'
 require_relative 'deck_cards.rb'
+require_relative 'wallet.rb'
 
 class BlackJack
   attr_accessor :player, :game
@@ -7,10 +8,10 @@ class BlackJack
     @game = game
     @player = player
     puts 'Welcome to BlackJack!'
-    puts 'Type q to leave the Table or S to start WINNING!.'
+    puts 'Type Q to leave the Table or S to start WINNING!.'
     input = gets.strip.downcase 
     if input == 'q'
-    GameMenu.new(@player) 
+    GameMenu.new(@player, @game) 
     else 
       dealer_hand
     end 
@@ -31,6 +32,11 @@ class BlackJack
     puts "Your hand is.."
     puts "#{@player_first_card.find_rank} of #{@player_first_card.suit}"
     puts "#{@player_second_card.find_rank} of #{@player_second_card.suit}"
+    bet_placement
+  end
+  def bet_placement
+    puts "How much would you like to bet of your #{@player.wallet.amount} amount?"
+    @bet_amount = gets.to_i
     option
   end
 
@@ -69,6 +75,6 @@ class BlackJack
   def pick_winner
   end
 end
-BlackJack.new(@player, @game)
+
 
 
