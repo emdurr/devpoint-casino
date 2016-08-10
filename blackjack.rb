@@ -45,7 +45,7 @@ class BlackJack
     @player_third_card = @deck.return_a_card
     puts '(H)it'
     puts '(S)tay'
-    option_input = gets.strip
+    option_input = gets.strip.upcase
     # case option_input
       if option_input == 'H'
         puts "Card is \n#{@player_third_card.find_rank} of #{@player_third_card.suit}"
@@ -57,13 +57,25 @@ class BlackJack
 
   def dealer_option
     puts "Second card is \n#{@dealer_second_card.find_rank} of #{@dealer_second_card.suit}"
-    if @dealer_first_card.value + @dealer_second_card.value <= 16
+    dealer_total = @dealer_first_card.value + @dealer_second_card.value
+    case dealer_total
+    when 1..16
+        # deal <= 16
+        # dealer auto gets new card
       dealer_last
-    elsif @dealer_first_card.value + @dealer_second_card.value >= 17 || @dealer_first_card.value + @dealer_second_card.value == 21
+    when 21
+      #dealer auto win
       pick_winner
-    elsif @dealer_first_card.value + @dealer_second_card.value >= 16
-      # do something
+    when 17..20
+      pick_winner
+    # elsif @dealer_first_card.value + @dealer_second_card.value >= 17 || @dealer_first_card.value + @dealer_second_card.value == 21
+    #   pick_winner
+    # elsif @dealer_first_card.value + @dealer_second_card.value >= 16
+    #   # do something
     else
+      puts "Dealer Bust!"
+      # player auto win
+      pick_winner
     end
   end
 
@@ -73,9 +85,26 @@ class BlackJack
     # if @dealer_first_card.value + @dealer_second_card.value + @dealer_third_card.value <= 21
     #   puts "Dealer Won!"
     # end
-    pick_winner
+    dealer_total = @dealer_first_card.value + @dealer_second_card.value + @dealer_third_card.value
+    puts "Dealer Bust" if dealer_total > 21
+    again
+    
   end
 
   def pick_winner
+    puts "Here we pick the winner."
+
+    again
+  end
+
+  def again
+    puts "Would you like to play again? y/n"
+    user_input = gets.strip.downcase
+    if user_input == 'y'
+      puts "Deal!"
+      dealer_hand
+    else
+      @game.menu
+    end
   end
 end
