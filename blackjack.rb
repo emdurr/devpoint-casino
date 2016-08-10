@@ -79,8 +79,3 @@ class BlackJack
   def pick_winner
   end
 end
-
-
-
-
-
