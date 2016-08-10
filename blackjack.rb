@@ -2,8 +2,9 @@ require 'pry'
 require_relative 'deck_cards.rb'
 
 class BlackJack
-  attr_accessor :player
-  def initialize(player)
+  attr_accessor :player, :game
+  def initialize(player, game)
+    @game = game
     @player = player
     puts 'Welcome to BlackJack!'
     puts 'Type q to leave the Table or S to start WINNING!.'
@@ -49,9 +50,18 @@ class BlackJack
 
   def dealer_option
     puts "Second card is \n#{@dealer_second_card.find_rank} of #{@dealer_second_card.suit}"
-    if @dealer_first_card.value + @dealer_second_card.value >= 16
+    if @dealer_first_card.value + @dealer_second_card.value <= 16
+      dealer_last
+    elsif @dealer_first_card.value + @dealer_second_card.value >= 17 || @dealer_first_card.value + @dealer_second_card.value == 21
       # do something
-    elsif
+    end
+  end
+
+  def dealer_last
+    @dealer_third_card = @deck.return_a_card
+    puts "#{@dealer_third_card.find_rank} of #{@dealer_third_card.suit}"
+    if @dealer_first_card.value + @dealer_second_card.value + @dealer_third_card.value <= 21
+      puts "Dealer Won!"
     end
   end
 end

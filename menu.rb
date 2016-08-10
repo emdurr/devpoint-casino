@@ -3,6 +3,7 @@ require_relative 'craps.rb'
 require_relative 'high_low.rb'
 require_relative 'slots_casino.rb'
 require_relative 'lucky_player1'
+require_relative 'blackjack.rb'
 
 
 class GameMenu
