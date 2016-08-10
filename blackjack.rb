@@ -39,8 +39,8 @@ class BlackJack
     puts '(H)it'
     puts '(S)tay'
     option_input = gets.strip
-    case option_input
-      when 'H'
+    # case option_input
+      if option_input == 'H'
         puts "Card is \n#{@player_third_card.find_rank} of #{@player_third_card.suit}"
         option
       else 'S'
@@ -53,18 +53,22 @@ class BlackJack
     if @dealer_first_card.value + @dealer_second_card.value <= 16
       dealer_last
     elsif @dealer_first_card.value + @dealer_second_card.value >= 17 || @dealer_first_card.value + @dealer_second_card.value == 21
-      # do something
+      pick_winner
     end
   end
 
   def dealer_last
     @dealer_third_card = @deck.return_a_card
     puts "#{@dealer_third_card.find_rank} of #{@dealer_third_card.suit}"
-    if @dealer_first_card.value + @dealer_second_card.value + @dealer_third_card.value <= 21
-      puts "Dealer Won!"
-    end
+    # if @dealer_first_card.value + @dealer_second_card.value + @dealer_third_card.value <= 21
+    #   puts "Dealer Won!"
+    # end
+    pick_winner
+  end
+
+  def pick_winner
   end
 end
-BlackJack.new(@player)
+BlackJack.new(@player, @game)
 
 
