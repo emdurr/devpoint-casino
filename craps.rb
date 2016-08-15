@@ -5,6 +5,21 @@ class Craps
   def initialize(player, game)
     @game = game
     puts "Welcome to the Craps table!!"
+    image = """ .........                                  .
+              :~, *   * ~,                    .
+              : ~, *   * ~.                   .
+              :  ~........~                   .
+              : *:         :      ~'~,        .
+              :  :         :    ~' *  ~,      .
+              ~* :    *    : ,~' *    * ~,    .
+               ~,:         :.~,*    *  ,~ :   .
+                ~:.........::  ~, *  ,~   :   .
+                            : *  ~,,~  *  :   .
+                            :* * * :  *   :   .
+                             ~, *  : *  ,~    .
+                               ~,  :  ,~      .
+                                 ~,:,~        ."""
+    puts image.white.on_red.blink
     @dice_roll = Dice.new
     @player = player
     @available_bets = ['Pass Line', "Don't Pass Line",
@@ -116,113 +131,113 @@ class Craps
       case @total
       when 7
         if check == 'Pass Line'
-          puts "#{check} Winner"
+          puts "#{check} Winner".white.on_green.blink
           @player.wallet.amount += @bet_total[0]
         elsif check == "Don't Pass Line"
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Place Bet 4'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Place Bet 5'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Place Bet 6'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Place Bet 8'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Place Bet 9'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Place Bet 10'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Place Bet to Lose 4'
-          puts "#{check} Winner"
+          puts "#{check} Winner".white.on_green.blink
           @player.wallet.amount += 2.2 * @bet_total[0]
         elsif check == 'Place Bet to Lose 5'
-          puts "#{check} Winner"
+          puts "#{check} Winner".white.on_green.blink
           @player.wallet.amount += 1.6 * @bet_total[0]
         elsif check == 'Place Bet to Lose 6'
-          puts "#{check} Winner"
+          puts "#{check} Winner".white.on_green.blink
           @player.wallet.amount += 1.25 * @bet_total[0]
         elsif check == 'Place Bet to Lose 8'
-          puts "#{check} Winner"
+          puts "#{check} Winner".white.on_green.blink
           @player.wallet.amount += 1.25 * @bet_total[0]
         elsif check == 'Place Bet to Lose 9'
-          puts "#{check} Winner"
+          puts "#{check} Winner".white.on_green.blink
           @player.wallet.amount += 1.6 * @bet_total[0]
         elsif check == 'Place Bet to Lose 10'
-          puts "#{check} Winner"
+          puts "#{check} Winner".white.on_green.blink
           @player.wallet.amount += 2.2 * @bet_total[0]
         elsif check == 'Buy Bet 4'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Buy Bet 5'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Buy Bet 6'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Buy Bet 8'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Buy Bet 9'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Buy Bet 10'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Lay Bet 4'
-          puts "#{check} Winner"
+          puts "#{check} Winner".white.on_green.blink
           @player.wallet.amount += 2 * @bet_total[0]
         elsif check == 'Lay Bet 5'
-          puts "#{check} Winner"
+          puts "#{check} Winner".white.on_green.blink
           @player.wallet.amount += 1.5 * @bet_total[0]
         elsif check == 'Lay Bet 6'
-          puts "#{check} Winner"
+          puts "#{check} Winner".white.on_green.blink
           @player.wallet.amount += 1.2 * @bet_total[0]
         elsif check == 'Lay Bet 8'
-          puts "#{check} Winner"
+          puts "#{check} Winner".white.on_green.blink
           @player.wallet.amount += 1.2 * @bet_total[0]
         elsif check == 'Lay Bet 9'
-          puts "#{check} Winner"
+          puts "#{check} Winner".white.on_green.blink
           @player.wallet.amount += 1.5 * @bet_total[0]
         elsif check == 'Lay Bet 10'
-          puts "#{check} Winner"
+          puts "#{check} Winner".white.on_green.blink
           @player.wallet.amount += 2 * @bet_total[0]
         elsif check == 'Field'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Any 7'
-          puts "#{check} Winner"
+          puts "#{check} Winner".white.on_green.blink
           @player.wallet.amount += 4 * @bet_total[0]
         elsif check == 'Snake Eyes'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Twelve Craps'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Three Craps'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Six Five'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Horn Bet'
-          puts "#{check} Lose"
+          puts "#{check} Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         else
           puts
         end
       when 2
         if check == 'Pass Line'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == "Don't Pass Line"
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += @bet_total[0]
         elsif check == 'Place Bet 4'
           puts "Wrong2"
@@ -300,19 +315,19 @@ class Craps
           puts "Double-Win"
           @player.wallet.amount += 2 * @bet_total[0]
         elsif check == 'Any 7'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Snake Eyes'
           puts "Win"
           @player.wallet.amount += 7 * @bet_total[0]
         elsif check == 'Twelve Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Three Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Six Five'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Horn Bet'
           puts "Win"
@@ -322,10 +337,10 @@ class Craps
         end
       when 3
         if check == 'Pass Line'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == "Don't Pass Line"
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += @bet_total[0]
         elsif check == 'Place Bet 4'
           puts "Wrong3"
@@ -400,25 +415,25 @@ class Craps
           puts "Wrong3"
           @bet_placement_1 << 'Lay Bet 10'
         elsif check == 'Field'
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += @bet_total[0]
         elsif check == 'Any 7'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Snake Eyes'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Twelve Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Three Craps'
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += 15 * @bet_total[0]
         elsif check == 'Six Five'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Horn Bet'
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += 3.75 * @bet_total[0]
         else
           puts
@@ -503,25 +518,25 @@ class Craps
           puts "Push to 10"
           @bet_placement_1 << 'Lay Bet 10'
         elsif check == 'Field'
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += @bet_total[0]
         elsif check == 'Any 7'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Snake Eyes'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Twelve Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Three Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Six Five'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Horn Bet'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         else
           puts
@@ -606,25 +621,25 @@ class Craps
           puts "Push to 10"
           @bet_placement_1 << 'Lay Bet 10'
         elsif check == 'Field'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Any 7'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Snake Eyes'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Twelve Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Three Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Six Five'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Horn Bet'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         else
           puts
@@ -709,25 +724,25 @@ class Craps
           puts "Push to 10"
           @bet_placement_1 << 'Lay Bet 10'
         elsif check == 'Field'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Any 7'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Snake Eyes'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Twelve Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Three Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Six Five'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Horn Bet'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         else
           puts
@@ -812,25 +827,25 @@ class Craps
           puts "Push to 10"
           @bet_placement_1 << 'Lay Bet 10'
         elsif check == 'Field'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Any 7'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Snake Eyes'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Twelve Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Three Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Six Five'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Horn Bet'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         else
           puts
@@ -915,25 +930,25 @@ class Craps
           puts "Push to 10"
           @bet_placement_1 << 'Lay Bet 10'
         elsif check == 'Field'
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += @bet_total[0]
         elsif check == 'Any 7'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Snake Eyes'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Twelve Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Three Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Six Five'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Horn Bet'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         else
           puts
@@ -1003,35 +1018,35 @@ class Craps
           puts "Lose if 10"
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Field'
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += @bet_total[0]
         elsif check == 'Any 7'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Snake Eyes'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Twelve Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Three Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Six Five'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Horn Bet'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         else
           puts
         end
       when 11
         if check == 'Pass Line'
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += @bet_total[0]
         elsif check == "Don't Pass Line"
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Place Bet 4'
           puts "Wrong11"
@@ -1106,35 +1121,35 @@ class Craps
           puts "Wrong11"
           @bet_placement_1 << 'Lay Bet 10'
         elsif check == 'Field'
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += @bet_total[0]
         elsif check == 'Any 7'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Snake Eyes'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Twelve Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Three Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Six Five'
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += 15 * @bet_total[0]
         elsif check == 'Horn Bet'
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += 3.75 * @bet_total[0]
         else
           puts
         end
       when 12
         if check == 'Pass Line'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == "Don't Pass Line"
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += @bet_total[0]
         elsif check == 'Place Bet 4'
           puts "Wrong12"
@@ -1209,25 +1224,25 @@ class Craps
           puts "Wrong12"
           @bet_placement_1 << 'Lay Bet 10'
         elsif check == 'Field'
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += 2 * @bet_total[0]
         elsif check == 'Any 7'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Snake Eyes'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Twelve Craps'
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += 30 * @bet_total[0]
         elsif check == 'Three Craps'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Six Five'
-          puts "Lose"
+          puts "Lose".white.on_red.blink
           @player.wallet.amount -= @bet_total[0]
         elsif check == 'Horn Bet'
-          puts "Winner"
+          puts "Winner".white.on_green.blink
           @player.wallet.amount += 7.5 * @bet_total[0]
         else
           puts
